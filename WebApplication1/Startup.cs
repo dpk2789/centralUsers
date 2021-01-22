@@ -35,6 +35,11 @@ namespace WebApplication1
                 .AddEntityFrameworkStores<CentralUserContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSwaggerDocument(settings =>
+            {
+                settings.Title = "Expenses";
+            });
+
             // Adding Authentication  
             services.AddAuthentication(options =>
             {
@@ -72,6 +77,11 @@ namespace WebApplication1
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseOpenApi();
+
+            app.UseSwaggerUi3();
+
 
             app.UseEndpoints(endpoints =>
             {
